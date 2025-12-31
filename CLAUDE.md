@@ -27,7 +27,7 @@
 ```typescript
 const calculateCashback = (annualPV: number) => {
   const PV_PER_CASHBACK = 300000; // 30만 PV
-  const CASHBACK_AMOUNT = 60000;  // 6만원
+  const CASHBACK_AMOUNT = 60000; // 6만원
 
   const cashbackCount = Math.floor(annualPV / PV_PER_CASHBACK);
   const totalCashback = cashbackCount * CASHBACK_AMOUNT;
@@ -40,12 +40,8 @@ const calculateCashback = (annualPV: number) => {
 
 ```typescript
 const calculateAnnual = (selectedProducts: Product[]) => {
-  const annualPrice = selectedProducts.reduce(
-    (sum, p) => sum + (p.price * p.monthlyUsage * 12), 0
-  );
-  const annualPV = selectedProducts.reduce(
-    (sum, p) => sum + (p.pv * p.monthlyUsage * 12), 0
-  );
+  const annualPrice = selectedProducts.reduce((sum, p) => sum + p.price * p.monthlyUsage * 12, 0);
+  const annualPV = selectedProducts.reduce((sum, p) => sum + p.pv * p.monthlyUsage * 12, 0);
   return { annualPrice, annualPV };
 };
 ```
@@ -123,13 +119,13 @@ interface StoreState {
 
 ```typescript
 const colors = {
-  primary: '#5BC0DE',      // 하늘색 (메인)
-  background: '#FFFFFF',
-  text: '#333333',
-  textLight: '#666666',
-  button: '#00B4D8',       // 시작하기 버튼
-  border: '#E5E5E5',
-  card: '#F5F5F5',
+  primary: "#5BC0DE", // 하늘색 (메인)
+  background: "#FFFFFF",
+  text: "#333333",
+  textLight: "#666666",
+  button: "#00B4D8", // 시작하기 버튼
+  border: "#E5E5E5",
+  card: "#F5F5F5",
 };
 ```
 
@@ -165,34 +161,34 @@ bottomButton: {
 
 ### 의사소통 정책
 
-| 컨텍스트 | 언어 | 예시 |
-|---------|------|------|
-| 사용자 응답 | 한글 | "완료했습니다" |
+| 컨텍스트    | 언어 | 예시                        |
+| ----------- | ---- | --------------------------- |
+| 사용자 응답 | 한글 | "완료했습니다"              |
 | 커밋 메시지 | 한글 | `feature: 온보딩 화면 구현` |
-| 코드 주석 | 한글 | `// 캐쉬백 계산` |
-| 문서 | 한글 | CLAUDE.md, README.md |
+| 코드 주석   | 한글 | `// 캐쉬백 계산`            |
+| 문서        | 한글 | CLAUDE.md, README.md        |
 
 ### 커밋 가이드라인
 
 **형식**: `<type>: <한글 메시지>`
 
-| Type | 용도 |
-|------|------|
-| `feature:` | 새로운 기능 구현 |
-| `fix:` | 버그 수정 |
-| `refactor:` | 코드 리팩토링 |
-| `docs:` | 문서 업데이트 |
-| `chore:` | 빌드, 의존성, 설정 |
+| Type        | 용도               |
+| ----------- | ------------------ |
+| `feature:`  | 새로운 기능 구현   |
+| `fix:`      | 버그 수정          |
+| `refactor:` | 코드 리팩토링      |
+| `docs:`     | 문서 업데이트      |
+| `chore:`    | 빌드, 의존성, 설정 |
 
 ### 코드 스타일 규칙
 
-| ❌ 금지 | ✅ 필수 |
-|--------|--------|
-| `React.FC` 패턴 | 함수 선언문 |
-| ESLint 무시 | 모든 경고 수정 |
-| `any` 타입 | 명시적 타입 |
+| ❌ 금지              | ✅ 필수          |
+| -------------------- | ---------------- |
+| `React.FC` 패턴      | 함수 선언문      |
+| ESLint 무시          | 모든 경고 수정   |
+| `any` 타입           | 명시적 타입      |
 | `index.ts` 배럴 파일 | 직접 파일 import |
-| 영문 주석 | 한글 주석 |
+| 영문 주석            | 한글 주석        |
 
 ### 기본 규칙
 
@@ -281,6 +277,7 @@ npm run build       (빌드 확인)
 **트리거 조건**: 코드 파일 수정 후 커밋 전
 
 **워크플로우**:
+
 ```
 코드 작성/수정
     ↓
@@ -294,6 +291,7 @@ code-reviewer 리뷰 실행   ← 필수 단계
 ```
 
 **리뷰 요청 방법**:
+
 ```
 Plan 파일: ~/.claude/plans/current-plan.md
 변경 범위: [어떤 기능/파일을 수정했는지]
@@ -302,21 +300,24 @@ Plan 파일: ~/.claude/plans/current-plan.md
 ```
 
 **리뷰 결과 보고 형식**:
+
 ```markdown
 ## 리뷰 결과 상세
 
-| 항목 | 개수 |
-|------|------|
-| Critical | 0개 |
-| Warning | 0개 |
-| Suggestion | N개 |
+| 항목       | 개수 |
+| ---------- | ---- |
+| Critical   | 0개  |
+| Warning    | 0개  |
+| Suggestion | N개  |
 
 ### [항목별 상세 내용]
+
 **파일**: 파일경로:라인번호
 **내용**: 구체적인 내용
 **평가**: 적용 필요 여부
 
 ---
+
 커밋 진행 가능 여부 판단
 ```
 
@@ -330,6 +331,7 @@ Plan 파일: ~/.claude/plans/current-plan.md
 ### Git 안전 프로토콜
 
 **명시적 승인 없이 금지**:
+
 - `rm` (파일 삭제)
 - `git restore` (변경 취소)
 - `git reset --hard` (하드 리셋)
@@ -359,15 +361,18 @@ Plan 파일: ~/.claude/plans/current-plan.md
 ### 2026-01-01
 
 **Expo 프로젝트 초기화 시 기존 파일 보존**
+
 - `create-expo-app`은 디렉토리를 완전히 덮어쓰므로, 기존 파일(README.md, CLAUDE.md, .git 등)을 미리 백업 후 복원해야 함
 - 백업 → 생성 → 복원 순서로 진행
 
 **Expo default 템플릿 구조**
+
 - default 템플릿은 `(tabs)` 폴더 기반 탭 네비게이션으로 생성됨
 - Stack 네비게이션으로 변경 시 `(tabs)` 폴더와 modal.tsx 삭제 필요
 - 기본 생성되는 components, hooks, constants 폴더는 활용 가능
 
 **Context7 MCP 활용**
+
 - 최신 라이브러리 API는 Context7를 통해 공식 문서 조회 가능
 - `resolve-library-id` → `query-docs` 순서로 사용
 - Zustand persist, Expo Router 등 최신 사용법 확인에 유용
@@ -377,21 +382,25 @@ Plan 파일: ~/.claude/plans/current-plan.md
 ### 2026-01-01 (추가)
 
 **Expo Router 네비게이션 패턴**
+
 - `router.replace('/')`: 현재 화면만 교체 (스택 유지)
 - `router.dismissAll()`: 스택의 첫 화면으로 돌아감 (iOS에서 자연스러운 dismiss 애니메이션)
 - "처음으로" 같은 리셋 버튼에는 `dismissAll()` 사용 권장
 
 **설문/폼 화면 레이아웃 패턴**
+
 ```
 SafeAreaView
 ├── header (고정) - 진행 상태, 일러스트, 질문
 ├── ScrollView (스크롤) - 선택지/입력 필드만
 └── footer (고정) - 버튼
 ```
+
 - 질문 텍스트는 항상 보이도록 상단 고정
 - 선택지만 스크롤되도록 구조 분리
 
 **하단 버튼 영역 스타일 통일**
+
 ```typescript
 footer: {
   paddingHorizontal: 24,
@@ -400,23 +409,28 @@ footer: {
   borderTopColor: Colors.borderLight,
 }
 ```
+
 - 상단 테두리로 콘텐츠와 시각적 분리
 - 모든 화면에서 일관된 스타일 유지
 
 **일러스트 컴포넌트 패턴**
+
 - 실제 이미지 대신 Ionicons 조합으로 플레이스홀더 구현
 - 메인 아이콘 + 보조 아이콘(absolute position)으로 시각적 풍부함
 - 타입별 설정을 객체로 관리하여 확장성 확보
 
 **외부 링크 처리**
+
 ```typescript
-import { Linking } from 'react-native';
-Linking.openURL('https://example.com');
+import { Linking } from "react-native";
+Linking.openURL("https://example.com");
 ```
+
 - 앱 내 브라우저 또는 외부 브라우저로 연결
 - URL 유효성 검증 후 사용 권장
 
 **제품 선택 UI 설계 원칙**
+
 - 애터미 제품명 대신 일반 카테고리명 사용 (예: "헤모힘" → "면역력/피로 개선")
 - 이유: 타겟 사용자가 아직 애터미를 모르는 일반 소비자
 - 기존 소비 습관과 연결되는 용어 사용

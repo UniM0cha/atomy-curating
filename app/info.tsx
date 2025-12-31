@@ -1,8 +1,8 @@
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { useRouter } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';
-import { Colors } from '@/constants/colors';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import { useRouter } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons } from "@expo/vector-icons";
+import { Colors } from "@/constants/colors";
 
 export default function InfoScreen() {
   const router = useRouter();
@@ -52,9 +52,7 @@ export default function InfoScreen() {
               <Text style={styles.highlightValueBig}>60,000원</Text>
             </View>
           </View>
-          <Text style={styles.noteText}>
-            * 30만 PV를 달성할 때마다 6만원의 캐쉬백을 받을 수 있습니다
-          </Text>
+          <Text style={styles.noteText}>* 30만 PV를 달성할 때마다 6만원의 캐쉬백을 받을 수 있습니다</Text>
         </View>
 
         {/* 마트체인지 설명 섹션 */}
@@ -65,10 +63,12 @@ export default function InfoScreen() {
           <Text style={styles.sectionTitle}>마트체인지란?</Text>
           <View style={styles.card}>
             <Text style={styles.cardText}>
-              <Text style={styles.bold}>마트체인지</Text>는 기존에 일반 마트에서 구매하던 생활용품, 식품, 화장품 등을 애터미 제품으로 바꾸는 것을 말합니다.
+              <Text style={styles.bold}>마트체인지</Text>는 기존에 일반 마트에서 구매하던 생활용품, 식품, 화장품 등을
+              애터미 제품으로 바꾸는 것을 말합니다.
             </Text>
             <Text style={styles.cardText}>
-              동일한 품질의 제품을 합리적인 가격에 구매하면서, PV 적립을 통해 캐쉬백까지 받을 수 있는 스마트한 소비 방법입니다.
+              동일한 품질의 제품을 합리적인 가격에 구매하면서, PV 적립을 통해 캐쉬백까지 받을 수 있는 스마트한 소비
+              방법입니다.
             </Text>
           </View>
         </View>
@@ -84,7 +84,8 @@ export default function InfoScreen() {
               애터미는 <Text style={styles.bold}>소비자 중심의 네트워크 마케팅</Text> 회사입니다.
             </Text>
             <Text style={styles.cardText}>
-              회원 가입 후 제품을 구매하고 PV를 적립하면, 캐쉬백 혜택을 받을 수 있습니다. 또한 지인에게 애터미를 소개하고 함께 구매하면 더 많은 혜택을 누릴 수 있습니다.
+              회원 가입 후 제품을 구매하고 PV를 적립하면, 캐쉬백 혜택을 받을 수 있습니다. 또한 지인에게 애터미를
+              소개하고 함께 구매하면 더 많은 혜택을 누릴 수 있습니다.
             </Text>
           </View>
         </View>
@@ -126,9 +127,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     paddingHorizontal: 16,
     paddingVertical: 12,
     borderBottomWidth: 1,
@@ -139,7 +140,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 17,
-    fontWeight: '600',
+    fontWeight: "600",
     color: Colors.text,
   },
   placeholder: {
@@ -161,13 +162,13 @@ const styles = StyleSheet.create({
     height: 56,
     borderRadius: 28,
     backgroundColor: `${Colors.button}15`,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginBottom: 12,
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: '700',
+    fontWeight: "700",
     color: Colors.text,
     marginBottom: 12,
   },
@@ -183,7 +184,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   bold: {
-    fontWeight: '600',
+    fontWeight: "600",
     color: Colors.text,
   },
   highlightCard: {
@@ -192,28 +193,28 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   highlightRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   highlightLabel: {
     fontSize: 14,
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     opacity: 0.9,
   },
   highlightValue: {
     fontSize: 16,
-    fontWeight: '600',
-    color: '#FFFFFF',
+    fontWeight: "600",
+    color: "#FFFFFF",
   },
   highlightValueBig: {
     fontSize: 24,
-    fontWeight: '700',
-    color: '#FFFFFF',
+    fontWeight: "700",
+    color: "#FFFFFF",
   },
   divider: {
     height: 1,
-    backgroundColor: 'rgba(255,255,255,0.2)',
+    backgroundColor: "rgba(255,255,255,0.2)",
     marginVertical: 12,
   },
   noteText: {
@@ -227,9 +228,9 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   exampleRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingVertical: 8,
   },
   exampleLabel: {
@@ -242,12 +243,12 @@ const styles = StyleSheet.create({
   },
   exampleLabelBold: {
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: "600",
     color: Colors.text,
   },
   exampleValueBold: {
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: "700",
     color: Colors.button,
   },
 });

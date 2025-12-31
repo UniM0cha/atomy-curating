@@ -1,7 +1,7 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Colors } from '@/constants/colors';
-import type { Category } from '@/types';
-import { ProductCheckbox } from '@/components/ProductCheckbox';
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { Colors } from "@/constants/colors";
+import type { Category } from "@/types";
+import { ProductCheckbox } from "@/components/ProductCheckbox";
 
 interface Props {
   category: Category;
@@ -11,17 +11,9 @@ interface Props {
   onClearAll: () => void;
 }
 
-export function CategorySection({
-  category,
-  selectedIds,
-  onToggleProduct,
-  onSelectAll,
-  onClearAll,
-}: Props) {
+export function CategorySection({ category, selectedIds, onToggleProduct, onSelectAll, onClearAll }: Props) {
   // 카테고리 내 선택된 제품 수
-  const selectedCount = category.items.filter((item) =>
-    selectedIds.includes(item.id)
-  ).length;
+  const selectedCount = category.items.filter((item) => selectedIds.includes(item.id)).length;
   const isAllSelected = selectedCount === category.items.length;
 
   return (
@@ -29,13 +21,8 @@ export function CategorySection({
       {/* 헤더 */}
       <View style={styles.header}>
         <Text style={styles.categoryName}>{category.name}</Text>
-        <TouchableOpacity
-          onPress={isAllSelected ? onClearAll : onSelectAll}
-          activeOpacity={0.7}
-        >
-          <Text style={styles.selectButton}>
-            {isAllSelected ? '전체 해제' : '전체 선택'}
-          </Text>
+        <TouchableOpacity onPress={isAllSelected ? onClearAll : onSelectAll} activeOpacity={0.7}>
+          <Text style={styles.selectButton}>{isAllSelected ? "전체 해제" : "전체 선택"}</Text>
         </TouchableOpacity>
       </View>
 
@@ -59,21 +46,21 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: 12,
     paddingHorizontal: 4,
   },
   categoryName: {
     fontSize: 18,
-    fontWeight: '700',
+    fontWeight: "700",
     color: Colors.text,
   },
   selectButton: {
     fontSize: 14,
     color: Colors.button,
-    fontWeight: '500',
+    fontWeight: "500",
   },
   products: {
     gap: 8,

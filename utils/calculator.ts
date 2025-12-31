@@ -1,5 +1,5 @@
-import type { Product, CashbackResult } from '../types';
-import { CASHBACK_CONFIG, findProductById, categories } from '../data/products';
+import type { Product, CashbackResult } from "../types";
+import { CASHBACK_CONFIG, findProductById, categories } from "../data/products";
 
 // 카테고리별 선택 개수 계산
 export interface CategoryCount {
@@ -11,9 +11,7 @@ export interface CategoryCount {
 export function getCategoryCounts(selectedProductIds: string[]): CategoryCount[] {
   return categories
     .map((category) => {
-      const count = category.items.filter((item) =>
-        selectedProductIds.includes(item.id)
-      ).length;
+      const count = category.items.filter((item) => selectedProductIds.includes(item.id)).length;
       return {
         id: category.id,
         name: category.name,
@@ -25,18 +23,12 @@ export function getCategoryCounts(selectedProductIds: string[]): CategoryCount[]
 
 // 연간 구매금액 계산
 export function calculateAnnualPrice(products: Product[]): number {
-  return products.reduce(
-    (sum, product) => sum + product.price * product.monthlyUsage * 12,
-    0
-  );
+  return products.reduce((sum, product) => sum + product.price * product.monthlyUsage * 12, 0);
 }
 
 // 연간 PV 계산
 export function calculateAnnualPV(products: Product[]): number {
-  return products.reduce(
-    (sum, product) => sum + product.pv * product.monthlyUsage * 12,
-    0
-  );
+  return products.reduce((sum, product) => sum + product.pv * product.monthlyUsage * 12, 0);
 }
 
 // 캐쉬백 횟수 계산
@@ -71,7 +63,7 @@ export function calculateResult(selectedProductIds: string[]): CashbackResult {
 
 // 숫자 포맷팅 (천단위 콤마)
 export function formatNumber(num: number): string {
-  return num.toLocaleString('ko-KR');
+  return num.toLocaleString("ko-KR");
 }
 
 // 금액 포맷팅 (천단위 콤마 + 원)

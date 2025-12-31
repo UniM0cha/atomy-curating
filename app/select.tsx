@@ -1,19 +1,18 @@
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { useRouter } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Button } from '@/components/Button';
-import { CategorySection } from '@/components/CategorySection';
-import { Colors } from '@/constants/colors';
-import { categories } from '@/data/products';
-import { useStore } from '@/store/useStore';
+import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { useRouter } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Button } from "@/components/Button";
+import { CategorySection } from "@/components/CategorySection";
+import { Colors } from "@/constants/colors";
+import { categories } from "@/data/products";
+import { useStore } from "@/store/useStore";
 
 export default function SelectScreen() {
   const router = useRouter();
-  const { selectedProductIds, toggleProduct, selectAllInCategory, clearAllInCategory } =
-    useStore();
+  const { selectedProductIds, toggleProduct, selectAllInCategory, clearAllInCategory } = useStore();
 
   const handleComplete = () => {
-    router.push('/result');
+    router.push("/result");
   };
 
   // 총 선택된 제품 수
@@ -23,10 +22,8 @@ export default function SelectScreen() {
     <SafeAreaView style={styles.container}>
       {/* 헤더 */}
       <View style={styles.header}>
-        <Text style={styles.title}>현재 구입하는{'\n'}제품을 선택해주세요</Text>
-        <Text style={styles.selectedCount}>
-          {totalSelected}개 선택됨
-        </Text>
+        <Text style={styles.title}>현재 구입하는{"\n"}제품을 선택해주세요</Text>
+        <Text style={styles.selectedCount}>{totalSelected}개 선택됨</Text>
       </View>
 
       {/* 카테고리 목록 */}
@@ -40,12 +37,10 @@ export default function SelectScreen() {
             onSelectAll={() =>
               selectAllInCategory(
                 category.id,
-                category.items.map((item) => item.id)
+                category.items.map((item) => item.id),
               )
             }
-            onClearAll={() =>
-              clearAllInCategory(category.items.map((item) => item.id))
-            }
+            onClearAll={() => clearAllInCategory(category.items.map((item) => item.id))}
           />
         ))}
       </ScrollView>
@@ -77,7 +72,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: '700',
+    fontWeight: "700",
     color: Colors.text,
     lineHeight: 34,
     marginBottom: 8,
@@ -85,7 +80,7 @@ const styles = StyleSheet.create({
   selectedCount: {
     fontSize: 14,
     color: Colors.button,
-    fontWeight: '500',
+    fontWeight: "500",
   },
   scrollView: {
     flex: 1,

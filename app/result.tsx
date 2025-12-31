@@ -1,17 +1,17 @@
-import { View, Text, StyleSheet, ScrollView, Linking, TouchableOpacity } from 'react-native';
-import { useRouter } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';
-import { Button } from '@/components/Button';
-import { ResultCard } from '@/components/ResultCard';
-import { Colors } from '@/constants/colors';
-import { useStore } from '@/store/useStore';
-import { calculateResult, formatCurrency, formatNumber, getCategoryCounts } from '@/utils/calculator';
+import { View, Text, StyleSheet, ScrollView, Linking, TouchableOpacity } from "react-native";
+import { useRouter } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons } from "@expo/vector-icons";
+import { Button } from "@/components/Button";
+import { ResultCard } from "@/components/ResultCard";
+import { Colors } from "@/constants/colors";
+import { useStore } from "@/store/useStore";
+import { calculateResult, formatCurrency, formatNumber, getCategoryCounts } from "@/utils/calculator";
 
 // 외부 링크
 const EXTERNAL_LINKS = {
-  atomyMall: 'https://www.atomy.kr',
-  azaMall: 'https://atomyaza.co.kr/',
+  atomyMall: "https://www.atomy.kr",
+  azaMall: "https://atomyaza.co.kr/",
 };
 
 export default function ResultScreen() {
@@ -32,7 +32,7 @@ export default function ResultScreen() {
   };
 
   const handleShowInfo = () => {
-    router.push('/info');
+    router.push("/info");
   };
 
   return (
@@ -81,11 +81,7 @@ export default function ResultScreen() {
           </View>
 
           <View style={styles.benefitCards}>
-            <ResultCard
-              icon="repeat-outline"
-              label="연간 캐쉬백 횟수"
-              value={`${result.cashbackCount}회`}
-            />
+            <ResultCard icon="repeat-outline" label="연간 캐쉬백 횟수" value={`${result.cashbackCount}회`} />
             <ResultCard
               icon="cash-outline"
               label="연간 총 캐쉬백"
@@ -98,8 +94,7 @@ export default function ResultScreen() {
         {/* 안내 메시지 */}
         <View style={styles.notice}>
           <Text style={styles.noticeText}>
-            * 30만 PV 달성 시 6만원 캐쉬백{'\n'}
-            * 실제 금액은 제품 구성에 따라 달라질 수 있습니다
+            * 30만 PV 달성 시 6만원 캐쉬백{"\n"}* 실제 금액은 제품 구성에 따라 달라질 수 있습니다
           </Text>
         </View>
 
@@ -112,18 +107,12 @@ export default function ResultScreen() {
         {/* 외부 링크 */}
         <View style={styles.linksSection}>
           <Text style={styles.linksTitle}>더 많은 상품 보기</Text>
-          <TouchableOpacity
-            style={styles.linkButton}
-            onPress={() => handleOpenLink(EXTERNAL_LINKS.atomyMall)}
-          >
+          <TouchableOpacity style={styles.linkButton} onPress={() => handleOpenLink(EXTERNAL_LINKS.atomyMall)}>
             <Ionicons name="storefront-outline" size={20} color={Colors.button} />
             <Text style={styles.linkButtonText}>애터미 공식 쇼핑몰</Text>
             <Ionicons name="chevron-forward" size={16} color={Colors.textLight} />
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.linkButton}
-            onPress={() => handleOpenLink(EXTERNAL_LINKS.azaMall)}
-          >
+          <TouchableOpacity style={styles.linkButton} onPress={() => handleOpenLink(EXTERNAL_LINKS.azaMall)}>
             <Ionicons name="cart-outline" size={20} color={Colors.button} />
             <Text style={styles.linkButtonText}>애터미 아자몰</Text>
             <Ionicons name="chevron-forward" size={16} color={Colors.textLight} />
@@ -154,25 +143,25 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     paddingVertical: 20,
     paddingHorizontal: 24,
-    alignItems: 'center',
+    alignItems: "center",
   },
   thankYouText: {
     fontSize: 18,
-    fontWeight: '600',
-    color: '#FFFFFF',
+    fontWeight: "600",
+    color: "#FFFFFF",
   },
   section: {
     paddingHorizontal: 24,
     paddingTop: 24,
   },
   sectionHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   sectionTitle: {
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: "700",
     color: Colors.text,
     marginBottom: 12,
   },
@@ -186,9 +175,9 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   categoryItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingVertical: 8,
   },
   categoryName: {
@@ -197,7 +186,7 @@ const styles = StyleSheet.create({
   },
   categoryCount: {
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: "600",
     color: Colors.button,
   },
   priceCard: {
@@ -206,9 +195,9 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   priceRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingVertical: 8,
   },
   priceLabel: {
@@ -217,7 +206,7 @@ const styles = StyleSheet.create({
   },
   priceValue: {
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
     color: Colors.text,
   },
   benefitCards: {
@@ -238,13 +227,13 @@ const styles = StyleSheet.create({
   ctaSection: {
     marginTop: 32,
     paddingHorizontal: 24,
-    alignItems: 'center',
+    alignItems: "center",
   },
   ctaTitle: {
     fontSize: 18,
-    fontWeight: '700',
+    fontWeight: "700",
     color: Colors.text,
-    textAlign: 'center',
+    textAlign: "center",
   },
   ctaSubtitle: {
     fontSize: 14,
@@ -257,13 +246,13 @@ const styles = StyleSheet.create({
   },
   linksTitle: {
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: "600",
     color: Colors.textLight,
     marginBottom: 12,
   },
   linkButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     backgroundColor: Colors.card,
     borderRadius: 12,
     padding: 16,

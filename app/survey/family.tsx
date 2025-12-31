@@ -1,18 +1,18 @@
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { useRouter } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Button } from '@/components/Button';
-import { Illustration } from '@/components/Illustration';
-import { OptionCard } from '@/components/OptionCard';
-import { Colors } from '@/constants/colors';
-import { useStore } from '@/store/useStore';
+import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { useRouter } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Button } from "@/components/Button";
+import { Illustration } from "@/components/Illustration";
+import { OptionCard } from "@/components/OptionCard";
+import { Colors } from "@/constants/colors";
+import { useStore } from "@/store/useStore";
 
 const FAMILY_OPTIONS = [
-  { value: '1', label: '1인' },
-  { value: '2', label: '2인' },
-  { value: '3', label: '3인' },
-  { value: '4', label: '4인' },
-  { value: '5+', label: '5인 이상' },
+  { value: "1", label: "1인" },
+  { value: "2", label: "2인" },
+  { value: "3", label: "3인" },
+  { value: "4", label: "4인" },
+  { value: "5+", label: "5인 이상" },
 ];
 
 export default function FamilySurveyScreen() {
@@ -20,16 +20,16 @@ export default function FamilySurveyScreen() {
   const { survey, setSurvey } = useStore();
 
   const handleSelect = (value: string) => {
-    setSurvey('familySize', value);
+    setSurvey("familySize", value);
   };
 
   const handleNext = () => {
-    router.push('/survey/age');
+    router.push("/survey/age");
   };
 
   const handleSkip = () => {
-    setSurvey('familySize', null);
-    router.push('/survey/age');
+    setSurvey("familySize", null);
+    router.push("/survey/age");
   };
 
   return (
@@ -49,7 +49,7 @@ export default function FamilySurveyScreen() {
         </View>
 
         {/* 질문 */}
-        <Text style={styles.question}>가족 구성원은{'\n'}몇 명인가요?</Text>
+        <Text style={styles.question}>가족 구성원은{"\n"}몇 명인가요?</Text>
         <Text style={styles.hint}>(선택사항)</Text>
       </View>
 
@@ -69,12 +69,7 @@ export default function FamilySurveyScreen() {
 
       {/* 하단 버튼 */}
       <View style={styles.footer}>
-        <Button
-          title="다음"
-          onPress={handleNext}
-          fullWidth
-          disabled={!survey.familySize}
-        />
+        <Button title="다음" onPress={handleNext} fullWidth disabled={!survey.familySize} />
         <Button title="건너뛰기" onPress={handleSkip} variant="text" fullWidth />
       </View>
     </SafeAreaView>
@@ -91,8 +86,8 @@ const styles = StyleSheet.create({
     paddingTop: 24,
   },
   progress: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
     gap: 8,
     marginBottom: 32,
   },
@@ -107,12 +102,12 @@ const styles = StyleSheet.create({
     width: 24,
   },
   illustrationContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: 24,
   },
   question: {
     fontSize: 24,
-    fontWeight: '700',
+    fontWeight: "700",
     color: Colors.text,
     marginBottom: 8,
     lineHeight: 34,

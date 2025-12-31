@@ -31,28 +31,28 @@ React Native (Expo) 프로젝트의 코드 품질 및 요구사항 충족 여부
 
 ### 🔴 Critical (필수 수정)
 
-| 항목 | 설명 |
-|-----|------|
-| `React.FC` 패턴 금지 | 함수 선언문 사용 필수 |
-| `any` 타입 금지 | 명시적 타입 사용 필수 |
+| 항목                      | 설명                      |
+| ------------------------- | ------------------------- |
+| `React.FC` 패턴 금지      | 함수 선언문 사용 필수     |
+| `any` 타입 금지           | 명시적 타입 사용 필수     |
 | 사용하지 않는 import 금지 | 불필요한 import 즉시 제거 |
-| 영문 주석 금지 | 모든 주석은 한글로 작성 |
-| ESLint 경고 | 모든 경고 수정 필수 |
+| 영문 주석 금지            | 모든 주석은 한글로 작성   |
+| ESLint 경고               | 모든 경고 수정 필수       |
 
 ### ⚠️ Warning (권장 수정)
 
-| 항목 | 설명 |
-|-----|------|
-| 컴포넌트 분리 | 재사용 가능한 컴포넌트는 분리 |
-| 타입 명시 | 암묵적 타입보다 명시적 타입 권장 |
-| 매직 넘버 | 상수로 분리 권장 |
+| 항목          | 설명                             |
+| ------------- | -------------------------------- |
+| 컴포넌트 분리 | 재사용 가능한 컴포넌트는 분리    |
+| 타입 명시     | 암묵적 타입보다 명시적 타입 권장 |
+| 매직 넘버     | 상수로 분리 권장                 |
 
 ### 💡 Suggestion (선택적)
 
-| 항목 | 설명 |
-|-----|------|
+| 항목        | 설명                        |
+| ----------- | --------------------------- |
 | 코드 간결화 | 더 간결한 표현 가능 시 제안 |
-| 네이밍 개선 | 더 명확한 변수/함수명 제안 |
+| 네이밍 개선 | 더 명확한 변수/함수명 제안  |
 
 ---
 
@@ -72,11 +72,11 @@ export function MyComponent({ prop }: Props) { ... }
 
 ```typescript
 // ❌ 금지 - 사용하지 않는 import
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from "react";
 // useCallback을 사용하지 않음
 
 // ✅ 필수 - 사용하는 것만 import
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 ```
 
 ### 주석 정책
@@ -108,11 +108,11 @@ const items: Product[] = [];
 ```markdown
 ## 리뷰 결과
 
-| 항목 | 개수 |
-|------|------|
-| Critical | N개 |
-| Warning | N개 |
-| Suggestion | N개 |
+| 항목       | 개수 |
+| ---------- | ---- |
+| Critical   | N개  |
+| Warning    | N개  |
+| Suggestion | N개  |
 
 ### 🔴 Critical (필수 수정)
 

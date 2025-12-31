@@ -1,10 +1,10 @@
-import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import type { AppState, SurveyData } from '../types';
+import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import type { AppState, SurveyData } from "../types";
 
 // 초기 상태
-const initialState: Pick<AppState, 'survey' | 'selectedProductIds'> = {
+const initialState: Pick<AppState, "survey" | "selectedProductIds"> = {
   survey: {
     familySize: null,
     ageGroup: null,
@@ -55,9 +55,7 @@ export const useStore = create<AppState>()(
       // 카테고리 전체 해제
       clearAllInCategory: (productIds: string[]) => {
         set((state) => ({
-          selectedProductIds: state.selectedProductIds.filter(
-            (id) => !productIds.includes(id)
-          ),
+          selectedProductIds: state.selectedProductIds.filter((id) => !productIds.includes(id)),
         }));
       },
 
@@ -67,8 +65,8 @@ export const useStore = create<AppState>()(
       },
     }),
     {
-      name: 'atomy-curating-storage',
+      name: "atomy-curating-storage",
       storage: createJSONStorage(() => AsyncStorage),
-    }
-  )
+    },
+  ),
 );

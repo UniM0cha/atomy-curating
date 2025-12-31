@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { Colors, Shadows } from '@/constants/colors';
+import { View, Text, StyleSheet } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { Colors, Shadows } from "@/constants/colors";
 
 interface Props {
   icon: keyof typeof Ionicons.glyphMap;
@@ -13,11 +13,7 @@ export function ResultCard({ icon, label, value, highlight = false }: Props) {
   return (
     <View style={[styles.card, highlight && styles.highlightCard]}>
       <View style={[styles.iconContainer, highlight && styles.highlightIconContainer]}>
-        <Ionicons
-          name={icon}
-          size={24}
-          color={highlight ? Colors.background : Colors.button}
-        />
+        <Ionicons name={icon} size={24} color={highlight ? Colors.background : Colors.button} />
       </View>
       <View style={styles.content}>
         <Text style={[styles.label, highlight && styles.highlightLabel]}>{label}</Text>
@@ -29,8 +25,8 @@ export function ResultCard({ icon, label, value, highlight = false }: Props) {
 
 const styles = StyleSheet.create({
   card: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     backgroundColor: Colors.background,
     borderRadius: 12,
     padding: 16,
@@ -44,13 +40,13 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 24,
-    backgroundColor: '#E3F7FA',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#E3F7FA",
+    alignItems: "center",
+    justifyContent: "center",
     marginRight: 16,
   },
   highlightIconContainer: {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
   },
   content: {
     flex: 1,
@@ -61,11 +57,11 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   highlightLabel: {
-    color: 'rgba(255, 255, 255, 0.9)',
+    color: "rgba(255, 255, 255, 0.9)",
   },
   value: {
     fontSize: 20,
-    fontWeight: '700',
+    fontWeight: "700",
     color: Colors.text,
   },
   highlightValue: {

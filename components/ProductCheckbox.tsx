@@ -1,6 +1,6 @@
-import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { Colors } from '@/constants/colors';
+import { TouchableOpacity, Text, View, StyleSheet } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { Colors } from "@/constants/colors";
 
 interface Props {
   name: string;
@@ -25,8 +25,8 @@ export function ProductCheckbox({ name, checked, onPress }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     padding: 12,
     backgroundColor: Colors.background,
     borderRadius: 8,
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
   checkedContainer: {
     borderColor: Colors.selected,
-    backgroundColor: '#F0FAFC',
+    backgroundColor: "#F0FAFC",
   },
   checkbox: {
     width: 22,
@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderWidth: 2,
     borderColor: Colors.unselected,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginRight: 12,
   },
   checkedCheckbox: {
@@ -57,6 +57,6 @@ const styles = StyleSheet.create({
   },
   checkedName: {
     color: Colors.selected,
-    fontWeight: '500',
+    fontWeight: "500",
   },
 });

@@ -1,18 +1,18 @@
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { useRouter } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Button } from '@/components/Button';
-import { Illustration } from '@/components/Illustration';
-import { OptionCard } from '@/components/OptionCard';
-import { Colors } from '@/constants/colors';
-import { useStore } from '@/store/useStore';
+import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { useRouter } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Button } from "@/components/Button";
+import { Illustration } from "@/components/Illustration";
+import { OptionCard } from "@/components/OptionCard";
+import { Colors } from "@/constants/colors";
+import { useStore } from "@/store/useStore";
 
 const AGE_OPTIONS = [
-  { value: '20s', label: '20대' },
-  { value: '30s', label: '30대' },
-  { value: '40s', label: '40대' },
-  { value: '50s', label: '50대' },
-  { value: '60+', label: '60대 이상' },
+  { value: "20s", label: "20대" },
+  { value: "30s", label: "30대" },
+  { value: "40s", label: "40대" },
+  { value: "50s", label: "50대" },
+  { value: "60+", label: "60대 이상" },
 ];
 
 export default function AgeSurveyScreen() {
@@ -20,16 +20,16 @@ export default function AgeSurveyScreen() {
   const { survey, setSurvey } = useStore();
 
   const handleSelect = (value: string) => {
-    setSurvey('ageGroup', value);
+    setSurvey("ageGroup", value);
   };
 
   const handleNext = () => {
-    router.push('/survey/experience');
+    router.push("/survey/experience");
   };
 
   const handleSkip = () => {
-    setSurvey('ageGroup', null);
-    router.push('/survey/experience');
+    setSurvey("ageGroup", null);
+    router.push("/survey/experience");
   };
 
   return (
@@ -49,7 +49,7 @@ export default function AgeSurveyScreen() {
         </View>
 
         {/* 질문 */}
-        <Text style={styles.question}>연령대가{'\n'}어떻게 되시나요?</Text>
+        <Text style={styles.question}>연령대가{"\n"}어떻게 되시나요?</Text>
         <Text style={styles.hint}>(선택사항)</Text>
       </View>
 
@@ -69,12 +69,7 @@ export default function AgeSurveyScreen() {
 
       {/* 하단 버튼 */}
       <View style={styles.footer}>
-        <Button
-          title="다음"
-          onPress={handleNext}
-          fullWidth
-          disabled={!survey.ageGroup}
-        />
+        <Button title="다음" onPress={handleNext} fullWidth disabled={!survey.ageGroup} />
         <Button title="건너뛰기" onPress={handleSkip} variant="text" fullWidth />
       </View>
     </SafeAreaView>
@@ -91,8 +86,8 @@ const styles = StyleSheet.create({
     paddingTop: 24,
   },
   progress: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
     gap: 8,
     marginBottom: 32,
   },
@@ -107,12 +102,12 @@ const styles = StyleSheet.create({
     width: 24,
   },
   illustrationContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: 24,
   },
   question: {
     fontSize: 24,
-    fontWeight: '700',
+    fontWeight: "700",
     color: Colors.text,
     marginBottom: 8,
     lineHeight: 34,

@@ -1,16 +1,16 @@
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { useRouter } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Button } from '@/components/Button';
-import { Illustration } from '@/components/Illustration';
-import { OptionCard } from '@/components/OptionCard';
-import { Colors } from '@/constants/colors';
-import { useStore } from '@/store/useStore';
+import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { useRouter } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Button } from "@/components/Button";
+import { Illustration } from "@/components/Illustration";
+import { OptionCard } from "@/components/OptionCard";
+import { Colors } from "@/constants/colors";
+import { useStore } from "@/store/useStore";
 
 const EXPERIENCE_OPTIONS = [
-  { value: 'yes', label: '예, 사용해본 적 있어요' },
-  { value: 'no', label: '아니요, 처음이에요' },
-  { value: 'skip', label: '선택 안함' },
+  { value: "yes", label: "예, 사용해본 적 있어요" },
+  { value: "no", label: "아니요, 처음이에요" },
+  { value: "skip", label: "선택 안함" },
 ];
 
 export default function ExperienceSurveyScreen() {
@@ -18,11 +18,11 @@ export default function ExperienceSurveyScreen() {
   const { survey, setSurvey } = useStore();
 
   const handleSelect = (value: string) => {
-    setSurvey('atomyExperience', value);
+    setSurvey("atomyExperience", value);
   };
 
   const handleNext = () => {
-    router.push('/select');
+    router.push("/select");
   };
 
   return (
@@ -42,7 +42,7 @@ export default function ExperienceSurveyScreen() {
         </View>
 
         {/* 질문 */}
-        <Text style={styles.question}>애터미 제품을{'\n'}사용해 보신 적 있나요?</Text>
+        <Text style={styles.question}>애터미 제품을{"\n"}사용해 보신 적 있나요?</Text>
       </View>
 
       {/* 스크롤 가능한 선택지 */}
@@ -61,12 +61,7 @@ export default function ExperienceSurveyScreen() {
 
       {/* 하단 버튼 */}
       <View style={styles.footer}>
-        <Button
-          title="다음"
-          onPress={handleNext}
-          fullWidth
-          disabled={!survey.atomyExperience}
-        />
+        <Button title="다음" onPress={handleNext} fullWidth disabled={!survey.atomyExperience} />
       </View>
     </SafeAreaView>
   );
@@ -82,8 +77,8 @@ const styles = StyleSheet.create({
     paddingTop: 24,
   },
   progress: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
     gap: 8,
     marginBottom: 32,
   },
@@ -98,12 +93,12 @@ const styles = StyleSheet.create({
     width: 24,
   },
   illustrationContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: 24,
   },
   question: {
     fontSize: 24,
-    fontWeight: '700',
+    fontWeight: "700",
     color: Colors.text,
     marginBottom: 24,
     lineHeight: 34,
