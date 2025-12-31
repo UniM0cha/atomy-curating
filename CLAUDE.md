@@ -334,3 +334,40 @@ Plan 파일: ~/.claude/plans/current-plan.md
 - `git restore` (변경 취소)
 - `git reset --hard` (하드 리셋)
 - `git push --force` (강제 푸시)
+
+---
+
+## CLAUDE.md 유지보수 정책
+
+이 문서는 프로젝트의 살아있는 문서입니다. 개발 과정에서 깨달은 교훈, 결정사항, 패턴 등을 지속적으로 업데이트합니다.
+
+### 업데이트 시점
+
+- 새로운 패턴/규칙 발견 시
+- 버그 원인 파악 후 예방책 정리 시
+- 라이브러리 사용법 정리 필요 시
+- 프로젝트 구조 변경 시
+
+### 기록 형식
+
+교훈은 아래 섹션에 날짜와 함께 기록합니다.
+
+---
+
+## 개발 교훈 (Lessons Learned)
+
+### 2026-01-01
+
+**Expo 프로젝트 초기화 시 기존 파일 보존**
+- `create-expo-app`은 디렉토리를 완전히 덮어쓰므로, 기존 파일(README.md, CLAUDE.md, .git 등)을 미리 백업 후 복원해야 함
+- 백업 → 생성 → 복원 순서로 진행
+
+**Expo default 템플릿 구조**
+- default 템플릿은 `(tabs)` 폴더 기반 탭 네비게이션으로 생성됨
+- Stack 네비게이션으로 변경 시 `(tabs)` 폴더와 modal.tsx 삭제 필요
+- 기본 생성되는 components, hooks, constants 폴더는 활용 가능
+
+**Context7 MCP 활용**
+- 최신 라이브러리 API는 Context7를 통해 공식 문서 조회 가능
+- `resolve-library-id` → `query-docs` 순서로 사용
+- Zustand persist, Expo Router 등 최신 사용법 확인에 유용
