@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Button } from '../components/Button';
-import { Illustration } from '../components/Illustration';
-import { Colors } from '../constants/colors';
-import { useStore } from '../store/useStore';
+import { Button } from '@/components/Button';
+import { Illustration } from '@/components/Illustration';
+import { Colors } from '@/constants/colors';
+import { useStore } from '@/store/useStore';
 
 export default function OnboardingScreen() {
   const router = useRouter();

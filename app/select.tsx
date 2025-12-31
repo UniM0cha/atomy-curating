@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Button } from '../components/Button';
-import { CategorySection } from '../components/CategorySection';
-import { Colors } from '../constants/colors';
-import { categories } from '../data/products';
-import { useStore } from '../store/useStore';
+import { Button } from '@/components/Button';
+import { CategorySection } from '@/components/CategorySection';
+import { Colors } from '@/constants/colors';
+import { categories } from '@/data/products';
+import { useStore } from '@/store/useStore';
 
 export default function SelectScreen() {
   const router = useRouter();

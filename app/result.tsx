@@ -2,11 +2,11 @@ import { View, Text, StyleSheet, ScrollView, Linking, TouchableOpacity } from 'r
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { Button } from '../components/Button';
-import { ResultCard } from '../components/ResultCard';
-import { Colors } from '../constants/colors';
-import { useStore } from '../store/useStore';
-import { calculateResult, formatCurrency, formatNumber, getCategoryCounts } from '../utils/calculator';
+import { Button } from '@/components/Button';
+import { ResultCard } from '@/components/ResultCard';
+import { Colors } from '@/constants/colors';
+import { useStore } from '@/store/useStore';
+import { calculateResult, formatCurrency, formatNumber, getCategoryCounts } from '@/utils/calculator';
 
 // 외부 링크
 const EXTERNAL_LINKS = {

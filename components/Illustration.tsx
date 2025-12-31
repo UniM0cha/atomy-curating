@@ -1,6 +1,6 @@
 import { View, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { Colors } from '../constants/colors';
+import { Colors } from '@/constants/colors';
 
 type IllustrationType = 'welcome' | 'family' | 'age' | 'experience';
 

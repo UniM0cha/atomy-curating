@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Colors } from '../constants/colors';
-import type { Category } from '../types';
-import { ProductCheckbox } from './ProductCheckbox';
+import { Colors } from '@/constants/colors';
+import type { Category } from '@/types';
+import { ProductCheckbox } from '@/components/ProductCheckbox';
 
 interface Props {
   category: Category;

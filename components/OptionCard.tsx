@@ -1,5 +1,5 @@
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { Colors, Shadows } from '../constants/colors';
+import { Colors, Shadows } from '@/constants/colors';
 
 interface Props {
   title: string;
