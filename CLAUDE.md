@@ -371,3 +371,52 @@ Plan 파일: ~/.claude/plans/current-plan.md
 - 최신 라이브러리 API는 Context7를 통해 공식 문서 조회 가능
 - `resolve-library-id` → `query-docs` 순서로 사용
 - Zustand persist, Expo Router 등 최신 사용법 확인에 유용
+
+---
+
+### 2026-01-01 (추가)
+
+**Expo Router 네비게이션 패턴**
+- `router.replace('/')`: 현재 화면만 교체 (스택 유지)
+- `router.dismissAll()`: 스택의 첫 화면으로 돌아감 (iOS에서 자연스러운 dismiss 애니메이션)
+- "처음으로" 같은 리셋 버튼에는 `dismissAll()` 사용 권장
+
+**설문/폼 화면 레이아웃 패턴**
+```
+SafeAreaView
+├── header (고정) - 진행 상태, 일러스트, 질문
+├── ScrollView (스크롤) - 선택지/입력 필드만
+└── footer (고정) - 버튼
+```
+- 질문 텍스트는 항상 보이도록 상단 고정
+- 선택지만 스크롤되도록 구조 분리
+
+**하단 버튼 영역 스타일 통일**
+```typescript
+footer: {
+  paddingHorizontal: 24,
+  paddingVertical: 16,
+  borderTopWidth: 1,
+  borderTopColor: Colors.borderLight,
+}
+```
+- 상단 테두리로 콘텐츠와 시각적 분리
+- 모든 화면에서 일관된 스타일 유지
+
+**일러스트 컴포넌트 패턴**
+- 실제 이미지 대신 Ionicons 조합으로 플레이스홀더 구현
+- 메인 아이콘 + 보조 아이콘(absolute position)으로 시각적 풍부함
+- 타입별 설정을 객체로 관리하여 확장성 확보
+
+**외부 링크 처리**
+```typescript
+import { Linking } from 'react-native';
+Linking.openURL('https://example.com');
+```
+- 앱 내 브라우저 또는 외부 브라우저로 연결
+- URL 유효성 검증 후 사용 권장
+
+**제품 선택 UI 설계 원칙**
+- 애터미 제품명 대신 일반 카테고리명 사용 (예: "헤모힘" → "면역력/피로 개선")
+- 이유: 타겟 사용자가 아직 애터미를 모르는 일반 소비자
+- 기존 소비 습관과 연결되는 용어 사용

@@ -20,7 +20,7 @@ export function ResultCard({ icon, label, value, highlight = false }: Props) {
         />
       </View>
       <View style={styles.content}>
-        <Text style={styles.label}>{label}</Text>
+        <Text style={[styles.label, highlight && styles.highlightLabel]}>{label}</Text>
         <Text style={[styles.value, highlight && styles.highlightValue]}>{value}</Text>
       </View>
     </View>
@@ -59,6 +59,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: Colors.textLight,
     marginBottom: 4,
+  },
+  highlightLabel: {
+    color: 'rgba(255, 255, 255, 0.9)',
   },
   value: {
     fontSize: 20,
