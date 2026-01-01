@@ -30,6 +30,9 @@ yarn-error.*
 .env*.local
 .env
 
+# Google Service Account (Play Store 배포용)
+google-service-account.json
+
 # TypeScript
 *.tsbuildinfo
 
