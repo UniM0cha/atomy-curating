@@ -70,7 +70,7 @@
 
 ## 연락처 정보
 - **개발자 이메일**: solst_ice@naver.com
-- **개인정보처리방침 URL**: https://{username}.github.io/atomy-curating/privacy-policy.html
+- **개인정보처리방침 URL**: https://unim0cha.github.io/atomy-curating/privacy-policy.html
 
 ---
 
