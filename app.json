@@ -14,7 +14,6 @@
     },
     "android": {
       "package": "com.solstice.atomycurating",
-      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#5BC0DE",
         "foregroundImage": "./assets/images/adaptive-icon.png"
@@ -43,6 +42,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "d5c4cb18-09ae-49cb-8e29-418c412b8209"
+      }
+    },
+    "owner": "solst_ice"
   }
 }
