@@ -2,6 +2,7 @@
 export interface Product {
   id: string;
   name: string;
+  atomyName?: string; // 애터미 제품명 (건강기능식품용)
   price: number;
   pv: number;
   monthlyUsage: number;
@@ -23,6 +24,8 @@ export interface SurveyData {
 
 // 캐쉬백 계산 결과 타입
 export interface CashbackResult {
+  monthlyPrice: number;
+  monthlyPV: number;
   annualPrice: number;
   annualPV: number;
   cashbackCount: number;

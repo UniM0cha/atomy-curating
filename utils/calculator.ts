@@ -21,14 +21,24 @@ export function getCategoryCounts(selectedProductIds: string[]): CategoryCount[]
     .filter((cat) => cat.count > 0);
 }
 
+// 월간 구매금액 계산
+export function calculateMonthlyPrice(products: Product[]): number {
+  return products.reduce((sum, product) => sum + product.price * product.monthlyUsage, 0);
+}
+
+// 월간 PV 계산
+export function calculateMonthlyPV(products: Product[]): number {
+  return products.reduce((sum, product) => sum + product.pv * product.monthlyUsage, 0);
+}
+
 // 연간 구매금액 계산
 export function calculateAnnualPrice(products: Product[]): number {
-  return products.reduce((sum, product) => sum + product.price * product.monthlyUsage * 12, 0);
+  return calculateMonthlyPrice(products) * 12;
 }
 
 // 연간 PV 계산
 export function calculateAnnualPV(products: Product[]): number {
-  return products.reduce((sum, product) => sum + product.pv * product.monthlyUsage * 12, 0);
+  return calculateMonthlyPV(products) * 12;
 }
 
 // 캐쉬백 횟수 계산
@@ -48,12 +58,19 @@ export function calculateResult(selectedProductIds: string[]): CashbackResult {
     .map((id) => findProductById(id))
     .filter((product): product is Product => product !== undefined);
 
-  const annualPrice = calculateAnnualPrice(products);
-  const annualPV = calculateAnnualPV(products);
+  // 월간 계산
+  const monthlyPrice = calculateMonthlyPrice(products);
+  const monthlyPV = calculateMonthlyPV(products);
+
+  // 연간 계산
+  const annualPrice = monthlyPrice * 12;
+  const annualPV = monthlyPV * 12;
   const cashbackCount = calculateCashbackCount(annualPV);
   const totalCashback = calculateTotalCashback(cashbackCount);
 
   return {
+    monthlyPrice,
+    monthlyPV,
     annualPrice,
     annualPV,
     cashbackCount,

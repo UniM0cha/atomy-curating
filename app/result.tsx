@@ -60,6 +60,18 @@ export default function ResultScreen() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>애터미 쇼핑몰에서 구매한다면?</Text>
           <View style={styles.priceCard}>
+            {/* 월간 데이터 */}
+            <View style={styles.priceRow}>
+              <Text style={styles.priceLabel}>월 예상 구매금액</Text>
+              <Text style={styles.priceValue}>{formatCurrency(result.monthlyPrice)}</Text>
+            </View>
+            <View style={styles.priceRow}>
+              <Text style={styles.priceLabel}>월 누적 PV</Text>
+              <Text style={styles.priceValue}>{formatNumber(result.monthlyPV)} PV</Text>
+            </View>
+            {/* 구분선 */}
+            <View style={styles.divider} />
+            {/* 연간 데이터 */}
             <View style={styles.priceRow}>
               <Text style={styles.priceLabel}>연간 예상 구매금액</Text>
               <Text style={styles.priceValue}>{formatCurrency(result.annualPrice)}</Text>
@@ -208,6 +220,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
     color: Colors.text,
+  },
+  divider: {
+    height: 1,
+    backgroundColor: Colors.borderLight,
+    marginVertical: 12,
   },
   benefitCards: {
     gap: 12,
