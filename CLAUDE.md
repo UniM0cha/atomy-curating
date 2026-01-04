@@ -182,13 +182,13 @@ bottomButton: {
 
 ### 코드 스타일 규칙
 
-| ❌ 금지              | ✅ 필수          |
-| -------------------- | ---------------- |
-| `React.FC` 패턴      | 함수 선언문      |
-| ESLint 무시          | 모든 경고 수정   |
-| `any` 타입           | 명시적 타입      |
-| `index.ts` 배럴 파일 | 직접 파일 import |
-| 영문 주석            | 한글 주석        |
+| ❌ 금지               | ✅ 필수              |
+| --------------------- | -------------------- |
+| `React.FC` 패턴       | 함수 선언문          |
+| ESLint 무시/경고 방치 | 모든 error/warn 수정 |
+| `any` 타입            | 명시적 타입          |
+| `index.ts` 배럴 파일  | 직접 파일 import     |
+| 영문 주석             | 한글 주석            |
 
 ### 기본 규칙
 
@@ -197,6 +197,7 @@ bottomButton: {
 3. **컴포넌트 분리**: 재사용 가능한 컴포넌트는 `components/`에 분리
 4. **상수 분리**: 설정값은 `constants/` 또는 JSON에서 관리
 5. **숫자 포맷**: 금액은 천단위 콤마 (toLocaleString)
+6. **Lint 정책**: error와 warn 모두 0개 상태에서만 커밋 가능
 
 ## 파일 생성 시 참고
 
@@ -263,11 +264,9 @@ const styles = StyleSheet.create({
 ```
 코드 작성
     ↓
-npm run lint        (린팅 검사)
+npm run lint        (린팅 검사 - error/warn 모두 0)
     ↓
-npm run type-check  (타입 검사)
-    ↓
-npm run build       (빌드 확인)
+npx tsc --noEmit    (타입 검사)
     ↓
 커밋
 ```
@@ -325,7 +324,7 @@ Plan 파일: ~/.claude/plans/current-plan.md
 | 레벨 | 의미 | 조치 |
 |------|------|------|
 | Critical | 반드시 수정 필요 | 수정 후 재리뷰 |
-| Warning | 수정 권장 | 검토 후 결정 |
+| Warning | 수정 필요 (lint warn 포함) | 커밋 전 수정 |
 | Suggestion | 개선 제안 | 선택적 적용 |
 
 ### Git 안전 프로토콜
