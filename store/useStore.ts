@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import type { AppState, SurveyData } from "../types";
+import type { AppState, SurveyData } from "@/types";
 
 // 초기 상태
 const initialState: Pick<AppState, "survey" | "selectedProductIds"> = {

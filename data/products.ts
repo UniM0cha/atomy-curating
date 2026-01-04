@@ -1,4 +1,4 @@
-import type { Category } from "../types";
+import type { Category } from "@/types";
 
 // 캐쉬백 설정
 export const CASHBACK_CONFIG = {

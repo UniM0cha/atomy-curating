@@ -6,7 +6,7 @@ const noRelativeImportPaths = require("eslint-plugin-no-relative-import-paths");
 module.exports = defineConfig([
   expoConfig,
   {
-    ignores: ["dist/*"],
+    ignores: ["dist/*", "scripts/*"],
   },
   {
     plugins: {

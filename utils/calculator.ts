@@ -1,5 +1,5 @@
-import type { Product, CashbackResult } from "../types";
-import { CASHBACK_CONFIG, findProductById, categories } from "../data/products";
+import type { Product, CashbackResult } from "@/types";
+import { CASHBACK_CONFIG, findProductById, categories } from "@/data/products";
 
 // 카테고리별 선택 개수 계산
 export interface CategoryCount {
