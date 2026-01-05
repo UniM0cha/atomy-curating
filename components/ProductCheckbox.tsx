@@ -4,11 +4,12 @@ import { Colors } from "@/constants/colors";
 
 interface Props {
   name: string;
+  atomyName?: string;
   checked: boolean;
   onPress: () => void;
 }
 
-export function ProductCheckbox({ name, checked, onPress }: Props) {
+export function ProductCheckbox({ name, atomyName, checked, onPress }: Props) {
   return (
     <TouchableOpacity
       style={[styles.container, checked && styles.checkedContainer]}
@@ -18,7 +19,10 @@ export function ProductCheckbox({ name, checked, onPress }: Props) {
       <View style={[styles.checkbox, checked && styles.checkedCheckbox]}>
         {checked && <Ionicons name="checkmark" size={16} color={Colors.background} />}
       </View>
-      <Text style={[styles.name, checked && styles.checkedName]}>{name}</Text>
+      <Text style={[styles.name, checked && styles.checkedName]}>
+        {name}
+        {atomyName && <Text style={styles.atomyName}> ({atomyName})</Text>}
+      </Text>
     </TouchableOpacity>
   );
 }
@@ -58,5 +62,10 @@ const styles = StyleSheet.create({
   checkedName: {
     color: Colors.selected,
     fontWeight: "500",
+  },
+  atomyName: {
+    fontSize: 12,
+    color: "#888888",
+    fontWeight: "400",
   },
 });

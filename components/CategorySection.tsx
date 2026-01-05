@@ -32,6 +32,7 @@ export function CategorySection({ category, selectedIds, onToggleProduct, onSele
           <ProductCheckbox
             key={product.id}
             name={product.name}
+            atomyName={product.atomyName}
             checked={selectedIds.includes(product.id)}
             onPress={() => onToggleProduct(product.id)}
           />
