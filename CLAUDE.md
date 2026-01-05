@@ -12,6 +12,7 @@
 - **상태관리**: Zustand
 - **스타일링**: StyleSheet (Tailwind 사용 안함)
 - **로컬 저장**: AsyncStorage
+- **코드 품질**: ESLint + Prettier (eslint-config-prettier로 충돌 방지)
 - **플랫폼**: Android 우선 (iOS 추후 대응)
 
 ## 아키텍처 특징
@@ -57,9 +58,9 @@ survey/age.tsx (연령대 선택)
     ↓
 survey/experience.tsx (애터미 경험)
     ↓
-select/index.tsx (제품 카테고리 선택)
+select.tsx (제품 카테고리 선택)
     ↓
-result/index.tsx (결과 화면)
+result.tsx (결과 화면)
 ```
 
 ## 데이터 구조
@@ -96,17 +97,17 @@ interface StoreState {
   survey: {
     familySize: number | null;
     ageGroup: string | null;
-    hasAtomyExperience: boolean | null;
+    atomyExperience: boolean | null;
   };
 
   // 선택된 제품 ID 목록
   selectedProductIds: string[];
 
   // Actions
-  setSurvey: (key: string, value: any) => void;
+  setSurvey: <K extends keyof SurveyData>(key: K, value: SurveyData[K]) => void;
   toggleProduct: (productId: string) => void;
-  selectAllInCategory: (categoryId: string) => void;
-  clearAllInCategory: (categoryId: string) => void;
+  selectAllInCategory: (categoryId: string, productIds: string[]) => void;
+  clearAllInCategory: (productIds: string[]) => void;
   reset: () => void;
 }
 ```
@@ -249,7 +250,7 @@ const styles = StyleSheet.create({
 
 ## 주의사항
 
-- **monthlyUsage**: 1인 가구 기준 값으로 설정됨, 가족 수에 따라 동적으로 배수 적용
+- **monthlyUsage**: 1인 가구 기준 월간 사용량 (가족 수 무관, 항상 1인 기준으로 계산)
 - **캐쉬백 공식**: 30만 PV = 6만원 (공식 앱 기준, 변경 시 config 수정)
 
 ---
@@ -261,12 +262,16 @@ const styles = StyleSheet.create({
 ```
 코드 작성
     ↓
-npm run lint        (린팅 검사 - error/warn 모두 0)
+npm run format:check  (포매팅 검사)
     ↓
-npx tsc --noEmit    (타입 검사)
+npm run lint          (린팅 검사 - error/warn 모두 0)
+    ↓
+npx tsc --noEmit      (타입 검사)
     ↓
 커밋
 ```
+
+**포매팅 자동 적용**: `npm run format`
 
 ### Code Reviewer 워크플로우
 
