@@ -1,6 +1,7 @@
 # Play Store 배포 가이드
 
 ## 목차
+
 1. [사전 준비](#사전-준비)
 2. [EAS 설정](#eas-설정)
 3. [Google Service Account 설정](#google-service-account-설정)
@@ -14,21 +15,26 @@
 ## 사전 준비
 
 ### 1. EAS CLI 설치
+
 ```bash
 npm install -g eas-cli
 ```
 
 ### 2. Expo 계정 로그인
+
 ```bash
 eas login
 ```
+
 Expo 계정이 없다면 [expo.dev](https://expo.dev)에서 무료로 생성할 수 있습니다.
 
 ### 3. 프로젝트 EAS 설정
+
 ```bash
 cd /path/to/atomy-curating
 eas build:configure
 ```
+
 이 명령은 `app.json`에 `extra.eas.projectId`를 자동으로 추가합니다.
 
 ---
@@ -37,13 +43,14 @@ eas build:configure
 
 ### eas.json 빌드 프로필
 
-| 프로필 | 용도 | 출력 형식 | 명령어 |
-|--------|------|----------|--------|
-| `development` | 개발/디버깅 | APK | `eas build -p android --profile development` |
-| `preview` | 테스트 배포 | APK | `eas build -p android --profile preview` |
-| `production` | Play Store 출시 | AAB | `eas build -p android --profile production` |
+| 프로필        | 용도            | 출력 형식 | 명령어                                       |
+| ------------- | --------------- | --------- | -------------------------------------------- |
+| `development` | 개발/디버깅     | APK       | `eas build -p android --profile development` |
+| `preview`     | 테스트 배포     | APK       | `eas build -p android --profile preview`     |
+| `production`  | Play Store 출시 | AAB       | `eas build -p android --profile production`  |
 
 ### 버전 자동 증가
+
 `eas.json`에 `autoIncrement: true` 설정이 되어 있어 production 빌드 시 `versionCode`가 자동으로 증가합니다.
 
 ---
@@ -86,25 +93,33 @@ CLI로 Play Store에 앱을 제출하려면 Service Account가 필요합니다.
 ## 빌드 명령어
 
 ### 개발용 빌드 (APK)
+
 테스트용 APK 파일을 생성합니다.
+
 ```bash
 eas build --platform android --profile development
 ```
 
 ### 프리뷰 빌드 (APK)
+
 내부 테스터에게 배포할 APK를 생성합니다.
+
 ```bash
 eas build --platform android --profile preview
 ```
 
 ### 프로덕션 빌드 (AAB)
+
 Play Store에 제출할 AAB 파일을 생성합니다.
+
 ```bash
 eas build --platform android --profile production
 ```
 
 ### 빌드 + 자동 제출
+
 빌드 완료 후 자동으로 Play Store에 제출합니다.
+
 ```bash
 eas build --platform android --profile production --auto-submit
 ```
@@ -143,14 +158,15 @@ eas build --platform android --profile production --auto-submit
 
 ### 제출 트랙
 
-| 트랙 | 설명 |
-|------|------|
-| `internal` | 내부 테스터 (최대 100명) - 기본값 |
-| `alpha` | 알파 테스터 |
-| `beta` | 베타 테스터 |
-| `production` | 공개 출시 |
+| 트랙         | 설명                              |
+| ------------ | --------------------------------- |
+| `internal`   | 내부 테스터 (최대 100명) - 기본값 |
+| `alpha`      | 알파 테스터                       |
+| `beta`       | 베타 테스터                       |
+| `production` | 공개 출시                         |
 
 트랙 변경:
+
 ```bash
 eas submit --platform android --profile production
 # 프롬프트에서 트랙 선택
@@ -162,9 +178,9 @@ eas submit --platform android --profile production
 
 ### 버전 번호 규칙
 
-| 항목 | 위치 | 설명 |
-|------|------|------|
-| `version` | app.json | 사용자에게 보이는 버전 (1.0.0) |
+| 항목          | 위치           | 설명                             |
+| ------------- | -------------- | -------------------------------- |
+| `version`     | app.json       | 사용자에게 보이는 버전 (1.0.0)   |
 | `versionCode` | app.json / EAS | Play Store 내부 버전 번호 (정수) |
 
 ### 업데이트 시 버전 변경
@@ -214,6 +230,7 @@ eas build:version:set --platform android --build-number [새로운_번호]
 ## 체크리스트
 
 ### 빌드 전
+
 - [ ] `npm run lint` 통과
 - [ ] `npm run type-check` 통과 (있다면)
 - [ ] 앱 아이콘 확인
@@ -221,6 +238,7 @@ eas build:version:set --platform android --build-number [새로운_번호]
 - [ ] eas.json 설정 확인
 
 ### 스토어 등록 전
+
 - [ ] 개인정보처리방침 URL 준비 (GitHub Pages 배포)
 - [ ] 스크린샷 4장 이상
 - [ ] 앱 설명문 (`docs/store-listing.md` 참고)
@@ -228,6 +246,7 @@ eas build:version:set --platform android --build-number [새로운_번호]
 - [ ] 앱 카테고리 선택
 
 ### 출시 전
+
 - [ ] 내부 테스트 트랙에서 테스트
 - [ ] 실제 기기에서 테스트
 - [ ] 개인정보처리방침 링크 동작 확인

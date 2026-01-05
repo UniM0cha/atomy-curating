@@ -1,10 +1,12 @@
 // https://docs.expo.dev/guides/using-eslint/
 const { defineConfig } = require("eslint/config");
 const expoConfig = require("eslint-config-expo/flat");
+const eslintConfigPrettier = require("eslint-config-prettier");
 const noRelativeImportPaths = require("eslint-plugin-no-relative-import-paths");
 
 module.exports = defineConfig([
   expoConfig,
+  eslintConfigPrettier,
   {
     ignores: ["dist/*", "scripts/*"],
   },
