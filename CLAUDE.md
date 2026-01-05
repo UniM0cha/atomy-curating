@@ -18,7 +18,7 @@
 
 - **서버 없음**: 완전 오프라인 앱
 - **로그인 없음**: 인증 불필요
-- **데이터 업데이트**: 제품 가격/PV는 앱 업데이트 시 갱신 (JSON 내장)
+- **데이터 업데이트**: 제품 가격/PV는 앱 업데이트 시 갱신 (TypeScript 파일 내장)
 
 ## 핵심 비즈니스 로직
 
@@ -64,30 +64,28 @@ result/index.tsx (결과 화면)
 
 ## 데이터 구조
 
-### products.json
+### data/products.ts
 
-```json
-{
-  "categories": [
-    {
-      "id": "living",
-      "name": "리빙/생활용품",
-      "items": [
-        {
-          "id": "living_tissue",
-          "name": "화장지,휴지",
-          "price": 15000,
-          "pv": 10000,
-          "monthlyUsage": 1
-        }
-      ]
-    }
-  ],
-  "config": {
-    "pvPerCashback": 300000,
-    "cashbackAmount": 60000
-  }
-}
+```typescript
+// 캐쉬백 설정
+export const CASHBACK_CONFIG = {
+  pvPerCashback: 300000, // 30만 PV
+  cashbackAmount: 60000, // 6만원
+} as const;
+
+// 제품 카테고리 데이터
+// monthlyUsage: 1인 가구 기준 월간 구매 빈도 (예: 0.33 = 3개월에 1번)
+export const categories: Category[] = [
+  {
+    id: "living",
+    name: "리빙/생활용품",
+    items: [
+      { id: "living_tissue", name: "화장지", price: 42800, pv: 5600, monthlyUsage: 0.33 },
+      // ...
+    ],
+  },
+  // ...
+];
 ```
 
 ### Zustand Store 구조
@@ -195,7 +193,7 @@ bottomButton: {
 1. **한국어 UI**: 모든 텍스트는 한국어로 작성
 2. **TypeScript 사용**: 타입 안전성 보장
 3. **컴포넌트 분리**: 재사용 가능한 컴포넌트는 `components/`에 분리
-4. **상수 분리**: 설정값은 `constants/` 또는 JSON에서 관리
+4. **상수 분리**: 설정값은 `constants/` 또는 `data/`에서 관리
 5. **숫자 포맷**: 금액은 천단위 콤마 (toLocaleString)
 6. **Lint 정책**: error와 warn 모두 0개 상태에서만 커밋 가능
 
@@ -251,8 +249,7 @@ const styles = StyleSheet.create({
 
 ## 주의사항
 
-- **PV 값**: 제품별 PV는 추후 실제 데이터로 교체 필요
-- **가격 데이터**: 더미 데이터로 시작, 나중에 실제 값으로 업데이트
+- **monthlyUsage**: 1인 가구 기준 값으로 설정됨, 가족 수에 따라 동적으로 배수 적용
 - **캐쉬백 공식**: 30만 PV = 6만원 (공식 앱 기준, 변경 시 config 수정)
 
 ---

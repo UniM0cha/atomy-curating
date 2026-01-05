@@ -16,10 +16,10 @@ const EXTERNAL_LINKS = {
 
 export default function ResultScreen() {
   const router = useRouter();
-  const { selectedProductIds, reset } = useStore();
+  const { selectedProductIds, survey, reset } = useStore();
 
-  // 결과 계산
-  const result = calculateResult(selectedProductIds);
+  // 결과 계산 (설문 데이터 기반으로 가족 수 배수 적용)
+  const result = calculateResult(selectedProductIds, survey);
   const categoryCounts = getCategoryCounts(selectedProductIds);
 
   const handleReset = () => {
