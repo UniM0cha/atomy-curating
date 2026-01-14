@@ -4,10 +4,10 @@ import { CASHBACK_CONFIG, findProductById, categories } from "@/data/products";
 // 가족 수에 따른 소비량 배수 (1인 가구 기준)
 const FAMILY_MULTIPLIER: Record<string, number> = {
   "1": 1, // 기준
-  "2": 1.7, // 2인 (규모의 경제 반영)
-  "3": 2.3, // 3인
-  "4": 2.8, // 4인
-  "5+": 3.5, // 5인 이상
+  "2": 1.3, // 2인
+  "3": 1.6, // 3인
+  "4": 1.9, // 4인
+  "5+": 2.2, // 5인 이상
 };
 
 // 카테고리별 선택 개수 계산
@@ -96,9 +96,9 @@ export function calculateResult(selectedProductIds: string[], survey?: SurveyDat
   };
 }
 
-// 숫자 포맷팅 (천단위 콤마)
+// 숫자 포맷팅 (천단위 콤마, 1의 자리 반올림)
 export function formatNumber(num: number): string {
-  return num.toLocaleString("ko-KR");
+  return Math.round(num).toLocaleString("ko-KR");
 }
 
 // 금액 포맷팅 (천단위 콤마 + 원)
